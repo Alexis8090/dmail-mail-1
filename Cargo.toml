@@ -1,0 +1,23 @@
+workspace = { members = ["io"] }
+[package]
+name = "dmail-mail"
+version = "0.1.0"
+edition = "2021"
+
+
+
+
+
+[dependencies]
+gstd = "1.4.2"
+gmeta = "1.4.2"
+dmail-mail-io = { path = "./io" }
+
+
+[build-dependencies]
+dmail-mail-io = { path = "./io" }
+gear-wasm-builder = "1.4.2"
+
+
+
+
