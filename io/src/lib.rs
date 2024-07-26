@@ -7,7 +7,7 @@ pub struct ProgramMetadata;
 
 impl Metadata for ProgramMetadata {
     type Init = ();
-    type Handle = InOut<SendMail, DmailEvent>;
+    type Handle = InOut<DmailAction, DmailEvent>;
     type Others = ();
     type Reply = ();
     type Signal = ();
@@ -17,11 +17,10 @@ impl Metadata for ProgramMetadata {
 #[derive(Encode, Decode, TypeInfo)]
 #[codec(crate = gstd::codec)]
 #[scale_info(crate = gstd::scale_info)]
-pub struct SendMail {
-    pub to:String,
-    pub path:String,
+pub enum DmailAction {
+    SendMail { to: String, path: String },
+    ReserveGas,
 }
-
 
 #[derive(Debug, Encode, Decode, TypeInfo)]
 #[codec(crate = gstd::codec)]
@@ -32,5 +31,5 @@ pub enum DmailEvent {
         to: String,
         path: String,
     },
+    GasReserved
 }
-
