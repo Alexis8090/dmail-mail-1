@@ -19,7 +19,7 @@ impl Metadata for ProgramMetadata {
 #[scale_info(crate = gstd::scale_info)]
 pub enum DmailAction {
     SendMail { to: String, path: String },
-    ReserveGas,
+      Reserve { amount: u64, duration: u32 },
 }
 
 #[derive(Debug, Encode, Decode, TypeInfo)]
@@ -31,5 +31,5 @@ pub enum DmailEvent {
         to: String,
         path: String,
     },
-    GasReserved
+    Reserve
 }
